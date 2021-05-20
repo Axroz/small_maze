@@ -114,7 +114,9 @@ def analyse_input(files: list, path: str):
 
 def visualize_maze_path_as_svg(matrix: NumberMatrix, name: str):
     print('Started visualization process')
-    dwg = Drawing('maps\\{}.svg'.format(name))
+    # Size attribute could be given, if 100% is not wanted to use
+    # size=(MAZE_WALL_SIZE * len(matrix[0]), MAZE_WALL_SIZE * len(matrix))
+    dwg = Drawing('maps\\{}.svg'.format(name)) 
     # Visualize the maze
     wall_size = MAZE_WALL_SIZE, MAZE_WALL_SIZE
     for i in range(len(matrix)):
@@ -123,21 +125,25 @@ def visualize_maze_path_as_svg(matrix: NumberMatrix, name: str):
                 square = shapes.Rect((j * MAZE_WALL_SIZE, i * MAZE_WALL_SIZE), wall_size, fill='grey')
                 dwg.add(square)
             elif matrix[i][j] > 0:
+                # Path goes from 1 ... N
                 circle = shapes.Circle(
                     (j * MAZE_WALL_SIZE + MAZE_WALL_SIZE / 2, i * MAZE_WALL_SIZE + MAZE_WALL_SIZE / 2),
                     r=MAZE_WALL_SIZE / 3, fill='#FF0000')
                 dwg.add(circle)
             elif matrix[i][j] == 0:
+                # Zero is our starting point
                 circle = shapes.Circle(
                     (j * MAZE_WALL_SIZE + MAZE_WALL_SIZE / 2, i * MAZE_WALL_SIZE + MAZE_WALL_SIZE / 2),
                     r=MAZE_WALL_SIZE / 2, fill='#0000FF')
                 dwg.add(circle)
             elif matrix[i][j] == -76:
+                # We marked used exit as -76
                 circle = shapes.Circle(
                     (j * MAZE_WALL_SIZE + MAZE_WALL_SIZE / 2, i * MAZE_WALL_SIZE + MAZE_WALL_SIZE / 2),
                     r=MAZE_WALL_SIZE / 2, fill='#00FF00')
                 dwg.add(circle)
             elif matrix[i][j] == -77:
+                # We marked optional exits as -77
                 square = shapes.Rect((j * MAZE_WALL_SIZE, i * MAZE_WALL_SIZE), wall_size, fill='black')
                 dwg.add(square)
     dwg.save()
