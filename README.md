@@ -45,9 +45,8 @@ python.exe main.py
 
 There is a small text-based (input-prompt) UI where you can specify where to read the mazes.
 
-Select 1 in the menu to loop through the files that are in the "maps"-folder.
-
-You can also just input all the mazes into maps folder and run from there (it is presumed as a starting location).
+You can also just input all the mazes into maps folder and run from there 
+(it is presumed as a starting location).
 
 ## Modifications / Restrictions
 
