@@ -25,7 +25,7 @@ It is also possible to utilize your own location to read the maps from.
 This program has been created with Python 3.8.8
 
 Environment is done with Anaconda and can be found from environment.yml
-(This file might have some not required libraries).
+(This file might have some excess libraries, since I did not create it from clean install).
 
 If you want to create an environment yourself here is the full list of required dependencies:
 ```python
